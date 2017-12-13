@@ -43,6 +43,7 @@
     <Compile Include="Extend\ExtSqlConnection.cs" />
     <Compile Include="Extend\ExtString.cs" />
     <Compile Include="Function\WebAccess.cs" />
+    <Compile Include="Helper\DelegateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
