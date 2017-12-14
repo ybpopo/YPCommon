@@ -18,5 +18,12 @@ namespace YPCommon.Helper
         /// <param name="value">传入值对象</param>
         /// <returns>返回值对象</returns>
         public delegate V AsyncDel<T, V>(T value);
+
+        /// <summary>
+        /// 泛型委托
+        /// </summary>
+        /// <typeparam name="T">传入值类型</typeparam>
+        /// <param name="value">传入值对象</param>
+        public delegate void AsyncDel<T>(T value);
     }
 }
