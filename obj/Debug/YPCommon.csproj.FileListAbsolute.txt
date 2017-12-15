@@ -3,3 +3,8 @@ E:\项目\GitHub\YPCommon\bin\Debug\YPCommon.pdb
 E:\项目\GitHub\YPCommon\obj\Debug\YPCommon.csprojResolveAssemblyReference.cache
 E:\项目\GitHub\YPCommon\obj\Debug\YPCommon.dll
 E:\项目\GitHub\YPCommon\obj\Debug\YPCommon.pdb
+G:\Other\GitHub\YPCommon\bin\Debug\YPCommon.dll
+G:\Other\GitHub\YPCommon\bin\Debug\YPCommon.pdb
+G:\Other\GitHub\YPCommon\obj\Debug\YPCommon.csprojResolveAssemblyReference.cache
+G:\Other\GitHub\YPCommon\obj\Debug\YPCommon.dll
+G:\Other\GitHub\YPCommon\obj\Debug\YPCommon.pdb
