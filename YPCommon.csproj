@@ -42,6 +42,7 @@
     <Compile Include="Extend\ExtObj.cs" />
     <Compile Include="Extend\ExtSqlConnection.cs" />
     <Compile Include="Extend\ExtString.cs" />
+    <Compile Include="Function\SimpleTimer.cs" />
     <Compile Include="Function\WebAccess.cs" />
     <Compile Include="Helper\DelegateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
