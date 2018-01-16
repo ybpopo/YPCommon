@@ -46,6 +46,7 @@
     <Compile Include="Extend\ExtString.cs" />
     <Compile Include="Function\Encrypter.cs" />
     <Compile Include="Function\SimpleTimer.cs" />
+    <Compile Include="Function\ThreadPoolWork.cs" />
     <Compile Include="Function\WebAccess.cs" />
     <Compile Include="Helper\DelegateHelper.cs" />
     <Compile Include="Helper\WebSiteHelper.cs" />
