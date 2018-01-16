@@ -24,31 +24,45 @@ namespace YPCommon.Function
 
         public static void WaitFinish(List<ThreadPoolWork> list)
         {
+            if (list == null || list.Count <= 0) return;
             bool wait = true;
-            int totalCount = list.Count;
+            int totalCount = 0;
+            lock (list)
+            {
+                totalCount = list.Count;
+            }
+
             while (wait)
             {
-                list.RemoveAll(s => s.Finish);
-                if (totalCount != list.Count) break;
+                lock (list)
+                {
+                    list.RemoveAll(s => s.Finish);
+                    if (totalCount != list.Count) break;
+                }
                 Thread.Sleep(500);
             }
         }
 
         public static void WaitAll(List<ThreadPoolWork> list)
         {
+            if (list == null || list.Count <= 0) return;
             bool wait = true;
             while (wait)
             {
                 wait = false;
-                foreach (var item in list)
+                lock (list)
                 {
-                    if (!item.Finish)
+                    foreach (var item in list)
                     {
-                        wait = true;
-                        Thread.Sleep(500);
-                        break;
+                        if (!item.Finish)
+                        {
+                            wait = true;
+                            Thread.Sleep(500);
+                            break;
+                        }
                     }
                 }
+
             }
         }
 
