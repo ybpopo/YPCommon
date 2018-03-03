@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace YPCommon.Function
@@ -207,6 +208,61 @@ namespace YPCommon.Function
                 new Uri(string.Format("http://www{0}", domain)) :
                 new Uri(string.Format("http://{0}", domain));
             return cookieUri;
+        }
+
+        [DllImport("wininet.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        static extern bool InternetGetCookieEx(string pchURL, string pchCookieName, StringBuilder pchCookieData, ref int pcchCookieData, int dwFlags, object lpReserved);
+
+        public static string GetCookieString(string url)
+        {
+            // Determine the size of the cookie     
+            int datasize = 256;
+            StringBuilder cookieData = new StringBuilder(datasize);
+
+            if (!InternetGetCookieEx(url, null, cookieData, ref datasize, 0x00002000, null))
+            {
+                if (datasize < 0)
+                    return null;
+
+                // Allocate stringbuilder large enough to hold the cookie     
+                cookieData = new StringBuilder(datasize);
+                if (!InternetGetCookieEx(url, null, cookieData, ref datasize, 0x00002000, null))
+                    return null;
+            }
+            return cookieData.ToString();
+        }
+
+        public static string GetCookieString(List<string> urlList)
+        {
+            // Determine the size of the cookie     
+            int datasize = 256;
+            StringBuilder cookieData = new StringBuilder(datasize);
+            string cookies = string.Empty;
+            foreach (var url in urlList)
+            {
+                if (!InternetGetCookieEx(url, null, cookieData, ref datasize, 0x00002000, null))
+                {
+                    if (datasize < 0)
+                    {
+                        continue;
+                        //return null;
+                    }
+
+                    // Allocate stringbuilder large enough to hold the cookie     
+                    cookieData = new StringBuilder(datasize);
+
+                    if (!InternetGetCookieEx(url, null, cookieData, ref datasize, 0x00002000, null))
+                    {
+                        continue;
+                        //return null;
+                    }
+                    cookies += cookieData.ToString();
+                    if (!cookies.EndsWith(";")) cookies += ";";
+                }
+            }
+
+            // return cookieData.ToString();
+            return cookies;
         }
     }
 }
