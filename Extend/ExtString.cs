@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
@@ -72,5 +73,17 @@ namespace System
                 Directory.CreateDirectory(directoryPath);
             }
         }
+
+        /// <summary>
+        /// 获取指定url的html
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static string ExtGetUrlHtml(this string url)
+        {
+            WebClient wc = new WebClient();
+            return wc.DownloadString(url);
+        }
+
     }
 }
