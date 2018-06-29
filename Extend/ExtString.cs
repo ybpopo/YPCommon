@@ -85,5 +85,40 @@ namespace System
             return wc.DownloadString(url);
         }
 
+        /// <summary>
+        /// 将字符转为指定类型
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <param name="defultValue"></param>
+        /// <param name="remove"></param>
+        /// <returns></returns>
+        public static T ExtToType<T>(this string value, T defultValue, string remove = "")
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(value)) return defultValue;
+                if (!string.IsNullOrEmpty(remove)) value = value.Replace(remove, "");
+                Type type = typeof(T);
+                if (type.FullName.Contains("System.DateTime"))
+                {
+                    object dt = DateTime.Parse(value);
+                    return (T)dt;
+                }
+
+                // 检测是否泛型类型的数据
+                object obj = Convert.ChangeType(value, typeof(T));
+                // 若为空返回泛型默认值
+                if (obj == null) return defultValue;
+                // 强制转换泛型类型并返回
+                return (T)obj;
+            }
+            catch (Exception e)
+            {
+                // 返回默认值
+                return defultValue;
+            }
+        }
+
     }
 }

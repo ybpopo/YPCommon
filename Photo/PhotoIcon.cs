@@ -27,7 +27,6 @@ namespace YPCommon.Photo
             using (MemoryStream msImg = new MemoryStream() , msIco = new MemoryStream())
             {
                 image.Save(msImg, ImageFormat.Png);
-
                 using (var bin = new BinaryWriter(msIco))
                 {
                     //写图标头部
@@ -46,10 +45,10 @@ namespace YPCommon.Photo
 
                     //写图像数据
                     bin.Write(msImg.ToArray());
-
                     bin.Flush();
                     bin.Seek(0, SeekOrigin.Begin);
                     return new Icon(msIco);
+                    
                 }
             }
         }

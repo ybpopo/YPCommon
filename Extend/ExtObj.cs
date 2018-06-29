@@ -50,6 +50,18 @@ namespace System
         }
 
         /// <summary>
+        /// 给对象属性附值
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        public static void ExtSetPropertyValue(this object obj, string propertyName, object value)
+        {
+            var property = obj.GetType().GetProperty(propertyName);
+            if (property != null) property.SetValue(obj, value, null);
+        }
+
+        /// <summary>
         /// 获取所有枚举项描述信息
         /// </summary>
         /// <param name="obj">枚举对象</param>

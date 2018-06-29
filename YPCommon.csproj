@@ -41,15 +41,10 @@
   <ItemGroup>
     <Compile Include="Extend\ExtDataRow.cs" />
     <Compile Include="Extend\ExtDouble.cs" />
+    <Compile Include="Extend\ExtIList.cs" />
     <Compile Include="Extend\ExtObj.cs" />
     <Compile Include="Extend\ExtSqlConnection.cs" />
     <Compile Include="Extend\ExtString.cs" />
-    <Compile Include="Function\Encrypter.cs" />
-    <Compile Include="Function\SimpleTimer.cs" />
-    <Compile Include="Function\ThreadPoolWork.cs" />
-    <Compile Include="Function\WebAccess.cs" />
-    <Compile Include="Helper\DelegateHelper.cs" />
-    <Compile Include="Helper\WebSiteHelper.cs" />
     <Compile Include="Photo\GrayscalePhoto.cs" />
     <Compile Include="Photo\PhotoIcon.cs" />
     <Compile Include="Photo\PhotoSize.cs" />
